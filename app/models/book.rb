@@ -1,9 +1,13 @@
 class Book < ApplicationRecord
   belongs_to :author
-  has_many :author_books
+  has_many :author_books, dependent: :destroy
   has_many :authors, through: :author_books
 
   paginates_per 25
+
+  validates :title, presence: true
+  validates :pages, presence: true
+  validates :year, presence: true
 
   def self.filter_by_authors(author_names)
     where(
@@ -28,5 +32,13 @@ class Book < ApplicationRecord
 
   def similar_book_records
     Book.where(title: similar_books)
+  end
+
+  def show_author_ids
+    authors.pluck(:id).join(', ')
+  end
+
+  def show_similar_books
+    similar_books.join(' | ')
   end
 end

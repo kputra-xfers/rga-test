@@ -1,2 +1,45 @@
-h1 Authors#new
-p Find me in app/views/authors/new.html.slim
+h2 Create an Author
+
+= form_for @author do |form|
+  - if @author.errors.any?
+    h3 Errors
+    ul
+      - @author.errors.full_messages.each do |message|
+        li = message
+
+  div
+    = form.label :name, 'Author Name'
+    = form.text_field :name
+  
+  div
+    = form.label :bio, 'Author Bio'
+    = form.text_area :bio
+
+  div
+    = form.label :gender, 'Author Gender'
+    = form.text_field :gender
+  
+  div
+    = form.label :summary, 'Author Summary'
+    = form.text_area :summary
+
+  div
+    = form.label :born, 'Author Born Date'
+    = form.date_field :born
+
+  div
+    = form.label :died, 'Author Death Date'
+    = form.date_field :died
+  
+  div
+    = form.label :book_ids, 'Book IDs'
+    = form.text_field :book_ids, placeholder: '1, 6, 19, ...'
+
+  div
+    = form.label :wikipedia, 'Wikipedia'
+    div
+      = form.fields_for :wikipedia do |subform|
+        = subform.label :url, 'URL'
+        = subform.text_field :url
+
+  = form.submit

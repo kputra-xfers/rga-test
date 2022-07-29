@@ -15,3 +15,7 @@ h3 Books
 ul
   - @author.authored_books.each do |book|
     li = link_to book.title, book_path(book)
+
+div style='display:flex'
+  = button_to 'Edit', edit_author_path(@author), method: 'get'
+  = button_to 'Remove', author_path(@author), method: 'delete', data: { confirm: 'Are you sure?' }

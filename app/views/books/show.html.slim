@@ -38,3 +38,7 @@ ul
   ul
     - @book.similar_books.each do |similar_book|
       li #{similar_book}
+
+div style='display:flex'
+  = button_to 'Edit', edit_book_path(@book), method: 'get'
+  = button_to 'Remove', book_path(@book), method: 'delete', data: { confirm: 'Are you sure?' }

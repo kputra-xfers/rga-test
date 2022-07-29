@@ -1,2 +1,49 @@
-h1 Books#edit
-p Find me in app/views/books/edit.html.slim
+h2 Edit a Book
+
+= form_for @book do |form|
+  - if @book.errors.any?
+    h3 Errors
+    ul
+      - @book.errors.full_messages.each do |message|
+        li = message
+
+  div
+    = form.label :title, 'Book Title'
+    = form.text_field :title
+
+  div
+    = form.label :author_id, 'Main Author ID'
+    = form.text_field :author_id
+
+  div
+    = form.label :author_ids, 'Author IDs'
+    = form.text_field :author_ids, value: @book.show_author_ids, placeholder: '1, 6, 19, ...'
+
+  div
+    = form.label :pages, 'Total Pages'
+    = form.text_field :pages
+
+  div
+    = form.label :year, 'Publication Year'
+    = form.text_field :year
+  
+  div
+    = form.label :description, 'Book Description'
+    = form.text_area :description
+
+  div
+    = form.label :plot, 'Book Plot'
+    = form.text_area :plot
+
+  div
+    = form.label :similar_books, 'Similar Books'
+    = form.text_area :similar_books, value: @book.show_similar_books, placeholder: 'Book A | Book B | Book C | ...'
+
+  div
+    = form.label :wikipedia, 'Wikipedia'
+    div
+      = form.fields_for :wikipedia do |subform|
+        = subform.label :url, 'URL'
+        = subform.text_field :url, value: @book.wikipedia['url']
+
+  = form.submit
