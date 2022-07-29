@@ -1,0 +1,17 @@
+h1 = link_to 'Author', authors_path
+h2 = @author.name
+
+- if @author.wikipedia&.dig('url').present?
+  a href=@author.wikipedia['url'] wikipedia
+  br
+
+h3 Summary
+p #{@author.summary || 'No summary provided'}
+
+h3 Bio
+p #{@author.bio || 'No bio provided'}
+
+h3 Books
+ul
+  - @author.authored_books.each do |book|
+    li = link_to book.title, book_path(book)

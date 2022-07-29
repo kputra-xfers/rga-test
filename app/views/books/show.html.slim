@@ -1,0 +1,40 @@
+h1 = link_to 'Books', books_path
+h2 = @book.title
+p by #{link_to @book.author.name, author_path(@book.author)}
+
+- if @book.wikipedia&.dig('url').present?
+  a href=@book.wikipedia['url'] wikipedia
+  br
+
+- if @book.goodreads&.dig('url').present?
+  a href=@book.goodreads['url'] goodreads
+  br
+
+- if @book.gutenberg&.dig('url').present?
+  a href=@book.gutenberg['url'] gutenberg
+  br
+
+- if @book.cover.present?
+  img src=@book.cover style="width:500px;height:600px;"
+
+h3 Summary
+p #{@book.description || 'No summary provided'}
+
+- if @book.images.present?
+  h3 images
+  - @book.images.each do |image|
+    img src=image style="width:500px;height:600px;"
+
+h3 Plot
+p #{@book.plot || 'No plot provided'}
+
+h3 Authors
+ul
+  - @book.authors.each do |author|
+    li = link_to author.name, author_path(author)
+
+- if @book.similar_books.present?
+  h3 Related/Similar Books
+  ul
+    - @book.similar_books.each do |similar_book|
+      li #{similar_book}

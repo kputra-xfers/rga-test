@@ -1,0 +1,28 @@
+h1 Books
+
+= form_tag(books_path, method: 'get') do
+  = label_tag 'Author'
+  = text_field_tag 'authors', nil, placeholder: 'author name'
+  = label_tag 'Publication Year'
+  = text_field_tag 'years', nil, placeholder: 'year'
+  = label_tag 'Min Page'
+  = number_field_tag 'min_page', nil, placeholder: 'minimum page'
+  = label_tag 'Max Page'
+  = number_field_tag 'max_page', nil, placeholder: 'maximum page'
+  = submit_tag 'Filter'
+
+- if @books.present?
+
+  table
+    - @books.each do |book|
+      tr
+        td = link_to book.title, book_path(book)
+        td = button_to 'Edit', edit_book_path(book), method: 'get'
+        td = button_to 'Remove', book_path(book), method: 'delete', data: { confirm: 'Are you sure?' }
+  = paginate @books
+
+- else
+  p No books found. Please add some books.
+br
+br
+= button_to 'Add a new Book', new_book_path, method: 'get'

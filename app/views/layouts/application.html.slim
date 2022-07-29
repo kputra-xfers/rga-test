@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title R/GA Test
+    meta name="viewport" content="width=device-width,initial-scale=1"
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application"
+  body
+    = link_to 'Books', books_path
+    '&nbsp;'
+    = link_to 'Authors', authors_path
+    = yield

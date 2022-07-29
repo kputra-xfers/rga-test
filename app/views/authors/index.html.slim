@@ -1,0 +1,22 @@
+h1 Authors
+
+= form_tag(authors_path, method: 'get') do
+  = label_tag 'Names'
+  = text_field_tag 'names', nil, placeholder: 'author names'
+  = submit_tag 'Filter'
+
+- if @authors.present?
+
+  table
+    - @authors.each do |author|
+      tr
+        td = link_to author.name, author_path(author)
+        td = button_to 'Edit', edit_author_path(author), method: 'get'
+        td = button_to 'Remove', author_path(author), method: 'delete', data: { confirm: 'Are you sure?' }
+  = paginate @authors
+
+- else
+  p No authors found. Please add some authors.
+br
+br
+= button_to 'Add a new Author', new_author_path, method: 'get'
