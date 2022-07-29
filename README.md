@@ -1,24 +1,44 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby Version: 3.1.2
+* Rails Version: 7.0.3.1
+* DB: PostgreSQL
 
-Things you may want to cover:
+## First configuration
+1. Clone directory
+```
+$ git clone git@github.com:kputra-xfers/rga-test.git
+```
 
-* Ruby version
+2. Move to directory
+```
+$ cd rga-test
+```
 
-* System dependencies
+3. Install library
+```
+$ gem install bundler
+$ bundle install
+```
 
-* Configuration
+4. Create, migrate, and seed database
+```
+$ rails db:create
+$ rails db:migrate
+$ rails db:seed
+```
 
-* Database creation
+## Run the apps
 
-* Database initialization
+1. Run the server
+```
+$ rails s
+```
 
-* How to run the test suite
+2. In your browser, set address to `http://localhost:3000`
 
-* Services (job queues, cache servers, search engines, etc.)
+## Running rspec
 
-* Deployment instructions
-
-* ...
+```
+$ rspec
+```
