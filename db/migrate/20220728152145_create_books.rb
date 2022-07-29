@@ -11,14 +11,14 @@ class CreateBooks < ActiveRecord::Migration[7.0]
       t.string :genres, array: true, default: []
       t.string :copyright
       t.string :title
-      t.jsonb :wikipedia, null: false, default: '{}'
+      t.jsonb :wikipedia, null: false, default: {}
       t.float :average_rating
       t.integer :rating_count
-      t.jsonb :goodreads, null: false, default: '{}'
+      t.jsonb :goodreads, null: false, default: {}
       t.string :similar_books, array: true, default: []
       t.text :description
       t.string :loc_class
-      t.jsonb :gutenberg, null: false, default: '{}'
+      t.jsonb :gutenberg, null: false, default: {}
       t.integer :pages
       t.string :language
       t.string :isbn13

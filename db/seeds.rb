@@ -61,3 +61,6 @@ authors.each do |author|
     )
   end
 end
+
+ActiveRecord::Base.connection.reset_pk_sequence!('books')
+ActiveRecord::Base.connection.reset_pk_sequence!('authors')

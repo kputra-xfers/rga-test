@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_28_152251) do
     t.text "bio"
     t.string "name"
     t.string "gender"
-    t.jsonb "wikipedia", default: "{}", null: false
+    t.jsonb "wikipedia", default: {}, null: false
     t.text "summary"
     t.datetime "born"
     t.datetime "died"
@@ -46,14 +46,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_28_152251) do
     t.string "genres", default: [], array: true
     t.string "copyright"
     t.string "title"
-    t.jsonb "wikipedia", default: "{}", null: false
+    t.jsonb "wikipedia", default: {}, null: false
     t.float "average_rating"
     t.integer "rating_count"
-    t.jsonb "goodreads", default: "{}", null: false
+    t.jsonb "goodreads", default: {}, null: false
     t.string "similar_books", default: [], array: true
     t.text "description"
     t.string "loc_class"
-    t.jsonb "gutenberg", default: "{}", null: false
+    t.jsonb "gutenberg", default: {}, null: false
     t.integer "pages"
     t.string "language"
     t.string "isbn13"

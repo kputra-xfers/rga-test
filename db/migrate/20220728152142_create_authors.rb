@@ -4,7 +4,7 @@ class CreateAuthors < ActiveRecord::Migration[7.0]
       t.text :bio
       t.string :name
       t.string :gender
-      t.jsonb :wikipedia, null: false, default: '{}'
+      t.jsonb :wikipedia, null: false, default: {}
       t.text :summary
       t.datetime :born
       t.datetime :died
